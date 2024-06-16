@@ -17,7 +17,7 @@ const PackingList = ({ addItems, onDeleteItems, onToggleItems, onreset }) => {
       return Number(a.isPacked) - Number(b.isPacked);
     });
   }
-  const PackingItems = sortedItems.map((item, i) => {
+  const PackingItems = sortedItems.map((item) => {
     return (
       <PackingItem
         key={item.id}
