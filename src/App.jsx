@@ -22,7 +22,7 @@ const App = () => {
   }
   function handleToggleItems(id) {
     setAddItems((items) => {
-      items.map((item) =>
+      return items.map((item) =>
         item.id === id ? { ...item, isPacked: !item.isPacked } : item
       );
     });

@@ -12,6 +12,7 @@ const Form = ({ onAddItems }) => {
       isPacked: false,
     };
     onAddItems(newItem);
+    console.log(newItem);
     setQuantity(1);
     setDescription("");
   }
