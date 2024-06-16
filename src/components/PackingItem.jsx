@@ -5,7 +5,7 @@ const PackingItem = ({ item, onDeleteItems, onToggleItems }) => {
         <input
           type="checkbox"
           value={item.isPacked}
-          onClick={() => onToggleItems(item.id)}
+          onChange={() => onToggleItems(item.id)}
         />
         <span style={item.isPacked ? { textDecoration: "line-through" } : {}}>
           {item.quantity}
