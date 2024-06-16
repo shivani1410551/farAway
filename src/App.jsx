@@ -11,6 +11,12 @@ const App = () => {
       return [...prev, item];
     });
   }
+  function handleReset() {
+    const isConfirmed = window.confirm("Are you sure you want to reset");
+    if (isConfirmed) {
+      setAddItems([]);
+    }
+  }
   function handleDeleteItems(id) {
     setAddItems((items) => items.filter((item) => item.id !== id));
   }
@@ -29,6 +35,7 @@ const App = () => {
         addItems={addItems}
         onDeleteItems={handleDeleteItems}
         onToggleItems={handleToggleItems}
+        onreset={handleReset}
       />
       <Stats addItems={addItems} />
     </div>

@@ -69,3 +69,13 @@ select {
   border-radius: 20px;
   width: 100px;
 }
+.actions select {
+  margin-left: 12rem;
+  width: 200px;
+}
+.reset {
+  margin-left: 12rem;
+  background-color: blue;
+  color: white;
+  padding: 8px;
+}
