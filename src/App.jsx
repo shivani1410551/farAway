@@ -1,29 +1,38 @@
-import "./App.css";
-import Form from "./components/Form";
-import Logo from "./components/Logo";
-import Stats from "./components/Stats";
-import PackingList from "./components/PackingList";
 import { useState } from "react";
-function App() {
-  const [items, setItems] = useState([]);
+import "./App.css";
+import Logo from "./components/Logo";
+import Form from "./components/Form";
+import PackingList from "./components/PackingList";
+import Stats from "./components/Stats";
+const App = () => {
+  const [addItems, setAddItems] = useState([]);
   function handleAddItems(item) {
-    setItems((items) => [...items, item]);
+    setAddItems((prev) => {
+      return [...prev, item];
+    });
   }
   function handleDeleteItems(id) {
-    setItems((items) =>
-      items.filter((item) => {
-        return item.id !== id;
-      })
-    );
+    setAddItems((items) => items.filter((item) => item.id !== id));
+  }
+  function handleToggleItems(id) {
+    setAddItems((items) => {
+      items.map((item) =>
+        item.id === id ? { ...item, isPacked: !item.isPacked } : item
+      );
+    });
   }
   return (
-    <>
+    <div>
       <Logo />
-      <Form onHandleAdd={handleAddItems} />
-      <PackingList items={items} onDeleteItem={handleDeleteItems} />
-      <Stats />
-    </>
+      <Form onAddItems={handleAddItems} />
+      <PackingList
+        addItems={addItems}
+        onDeleteItems={handleDeleteItems}
+        onToggleItems={handleToggleItems}
+      />
+      <Stats addItems={addItems} />
+    </div>
   );
-}
+};
 
 export default App;

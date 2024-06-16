@@ -1,10 +1,16 @@
-import Items from "./Items";
 import PackingItem from "./PackingItem";
-const PackingList = ({ items, onDeleteItem }) => {
-  const list = Items.map((item, i) => {
-    return <PackingItem key={i} data={item} onDeleteItem={onDeleteItem} />;
+const PackingList = ({ addItems, onDeleteItems, onToggleItems }) => {
+  const PackingItems = addItems.map((item, i) => {
+    return (
+      <PackingItem
+        key={item.id}
+        item={item}
+        onDeleteItems={onDeleteItems}
+        onToggleItems={onToggleItems}
+      />
+    );
   });
-  return <ul className="List">{list}</ul>;
+  return <ul className="List">{PackingItems}</ul>;
 };
 
 export default PackingList;

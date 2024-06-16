@@ -1,12 +1,17 @@
-import React from "react";
-
-const PackingItem = ({ data, items, onDeleteItem }) => {
+const PackingItem = ({ item, onDeleteItems, onToggleItems }) => {
   return (
     <div>
-      <li style={data.isPacked ? { textDecoration: "line-through" } : {}}>
-        <span>{data.quantity}</span>
-        {data.description}
-        <button onClick={() => onDeleteItem(data.id)}>❌</button>
+      <li>
+        <input
+          type="checkbox"
+          value={item.isPacked}
+          onClick={() => onToggleItems(item.id)}
+        />
+        <span style={item.isPacked ? { textDecoration: "line-through" } : {}}>
+          {item.quantity}
+        </span>
+        {item.description}
+        <button onClick={() => onDeleteItems(item.id)}>❌</button>
       </li>
     </div>
   );
